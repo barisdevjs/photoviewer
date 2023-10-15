@@ -53,7 +53,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='dark'>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <div className="border-b ">
           <div className="flex h-16 items-center px-4 mx-auto">
             LOGO
@@ -67,7 +67,7 @@ export default function RootLayout({
         </div>
         <div className='flex'>
           <SideMenu />
-          <div>{children}</div>
+          <div className='w-full px-4 pt-12'>{children}</div>
         </div>
       </body>
     </html>

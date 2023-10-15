@@ -1,27 +1,41 @@
-"use client"
+import UploadButton from "./upload-button";
+import cloudinary from "cloudinary";
+import CloudinaryImg from "./cloudinary-image";
 
-import { CldUploadButton, CldUploadWidgetResults } from "next-cloudinary";
-
-
-function Gallery() {
-    return (
-        <section>
-            <div className="flex space-between">
-                <h1 className="text-4xl font-bold">Gallery</h1>
-                <CldUploadButton
-                    uploadPreset="gegrjiwd"
-                    onUpload={(results: CldUploadWidgetResults) => {
-                        if (results.info && typeof results.info === 'object') {
-                            const publicId = (results.info as { public_id?: string }).public_id;
-                            if (publicId) {
-                                console.log(publicId);
-                            }
-                        }
-                    }}
-                />
-            </div>
-        </section>
-    )
+export type SearchResultT = {
+  public_id: string,
+  filename: string
 }
 
-export default Gallery
+export default async function GalleryPage() {
+
+  const results = await cloudinary.v2.search
+    .expression('resource_type:image')
+    .sort_by('public_id', 'desc')
+    .max_results(10)
+    .execute() as { resources:SearchResultT[]}
+
+  console.log(results)
+
+  if (!results.resources.length) return <div>NOT FOUND</div>
+  return (
+    <section>
+      <div className="flex justify-between">
+        <h1 className="text-4xl font-bold">Gallery</h1>
+        <UploadButton />
+        <div className="grid grid-cols-4 gap-4">
+        {results.resources.map((result) => (
+          <CloudinaryImg
+          key={result.public_id} 
+          alt={result.filename}
+          public_id={result.public_id}
+          width="500"
+          height="300"
+          />
+          ))
+        }
+        </div>
+      </div>
+    </section>
+  )
+}
