@@ -4,7 +4,8 @@ import CloudinaryImg from "./cloudinary-image";
 
 export type SearchResultT = {
   public_id: string,
-  filename: string
+  filename: string,
+  url: string
 }
 
 export default async function GalleryPage() {
@@ -12,12 +13,12 @@ export default async function GalleryPage() {
   const results = await cloudinary.v2.search
     .expression('resource_type:image')
     .sort_by('public_id', 'desc')
-    .max_results(10)
+    .max_results(5)
     .execute() as { resources:SearchResultT[]}
 
   console.log(results)
 
-  if (!results.resources.length) return <div>NOT FOUND</div>
+  // if (!results.resources.length) return <div>NOT FOUND</div>
   return (
     <section>
       <div className="flex justify-between">
@@ -27,10 +28,9 @@ export default async function GalleryPage() {
         {results.resources.map((result) => (
           <CloudinaryImg
           key={result.public_id} 
-          alt={result.filename}
-          public_id={result.public_id}
-          width="500"
-          height="300"
+          alt={result.public_id}  src={result.public_id}
+          width={500} 
+          height={500} 
           />
           ))
         }
