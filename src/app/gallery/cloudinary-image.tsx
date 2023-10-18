@@ -12,6 +12,8 @@ interface CloudinaryImgProps {
 
 export default function CloudinaryImg({ key, alt, src, width, height } : CloudinaryImgProps) {
     return (
+        <div>
         <CldImage  alt={alt} src={src} key={key} width={width} height={height} />
+        </div>
     )
 }
