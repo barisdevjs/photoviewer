@@ -32,8 +32,7 @@ Check out for cloudinary dashboard [Cloudinary](https://cloudinary.com/) for mor
 
 
 CONTINUE
-4400
+10200
 
 TASKS
 - Add Auth mechanism
-- add type for cloudinaryUploadBtn
