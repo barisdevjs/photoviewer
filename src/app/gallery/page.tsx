@@ -20,7 +20,12 @@ export default async function GalleryPage() {
 
   console.log(results)
 
-  // if (!results.resources.length) return <div>NOT FOUND</div>
+  const MAX_COLUMNS = 4;
+  function getColumns(colIdx: number) {
+    return results.resources.filter(
+      (_, idx) => idx % MAX_COLUMNS === colIdx
+    )
+  }
   return (
     <section>
       <div className="flex flex-col gap-8">

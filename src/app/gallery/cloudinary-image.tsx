@@ -14,7 +14,7 @@ interface CloudinaryImgProps {
     width: number;
     height: number;
     tag: string[]
-    onUnheart?: (unheartedResource: SearchResultT) => void
+    onUnheart?: (unheartedResource: SearchResultT["public_id"]) => void
 }
 
 export default function CloudinaryImg({ key, alt, src, width, height, tag, onUnheart }: CloudinaryImgProps ) {
@@ -25,6 +25,7 @@ export default function CloudinaryImg({ key, alt, src, width, height, tag, onUnh
             <CldImage alt={alt} src={src} key={key} width={width} height={height} tags={tag} />
             {isFavorite ?
                 <FullHeart onClick={() => {
+                    () => onUnheart?.(src)
                     setIsFavorite(false);
                     startTransition(() => {
                         setAsFavoriteAction(src, false)

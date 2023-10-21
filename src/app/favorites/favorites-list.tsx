@@ -1,10 +1,16 @@
+"use client";
+
 import CloudinaryImg from "../gallery/cloudinary-image";
 import { SearchResultT } from "./page";
-import { useState } from "react"
+import { useState, useEffect } from "react";
 
 export default function FavoritesList({ initialResources }: { initialResources: SearchResultT[] }) {
     const [resources, setResources] = useState(initialResources)
 
+    useEffect(() => {
+        setResources(initialResources)
+    }, [initialResources])
+    
     return (
         <div className="grid grid-cols-4 gap-4">
             {resources.map((result) => (
@@ -18,7 +24,7 @@ export default function FavoritesList({ initialResources }: { initialResources: 
                     onUnheart={(unheartedResource) => {
                         setResources((currentResources) => 
                             currentResources.filter((resource) => 
-                                resource.public_id !== unheartedResource.public_id
+                                resource.public_id !== unheartedResource
                          )
                         )
                     }}
