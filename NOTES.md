@@ -12,14 +12,4 @@
 with the layout.tsx will be rendered in {children}
 
 
-        onUpload={(results: CldUploadWidgetResults) => {
-          if (results.info && typeof results.info === 'object') {
-            const publicId = (results.info as { public_id?: string }).public_id;
-            if (publicId) {
-              console.log(publicId);
-              setImageId(publicId);
-            }
-          }
-        }}
-
 - remove use-client in here to use this as a react server component

@@ -32,7 +32,6 @@ Check out for cloudinary dashboard [Cloudinary](https://cloudinary.com/) for mor
 
 
 CONTINUE
-10200
+117
 
 TASKS
-- Add Auth mechanism
