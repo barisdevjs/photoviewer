@@ -1,19 +1,13 @@
-"use client";
+"use client"
 
 import { ImageGrid } from "@/components/image-grid";
-import CloudinaryImg from "../gallery/cloudinary-image";
+import CloudinaryImg from "./cloudinary-image";
 import { SearchResultT } from "./page";
-import { useState, useEffect } from "react";
 
-export default function FavoritesList({ initialResources }: { initialResources: SearchResultT[] }) {
-    const [resources, setResources] = useState(initialResources)
-
-    useEffect(() => {
-        setResources(initialResources)
-    }, [initialResources])
+export default function GalleryGrid({ images }: { images: SearchResultT[] }) {
 
     return (
-        <ImageGrid images={resources}
+        <ImageGrid images={images}
             getImage={(image: SearchResultT) => {
                 return (
                     <CloudinaryImg

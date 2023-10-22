@@ -1,6 +1,6 @@
 import UploadButton from "./upload-button";
 import cloudinary from "cloudinary";
-import CloudinaryImg from "./cloudinary-image";
+import GalleryGrid from "./gallery-grid";
 
 export type SearchResultT = {
   public_id: string,
@@ -16,36 +16,18 @@ export default async function GalleryPage() {
     .sort_by('created_at', 'desc')
     .with_field('tags')
     .max_results(10)
-    .execute() as { resources:SearchResultT[]}
+    .execute() as { resources: SearchResultT[] }
 
   console.log(results)
 
-  const MAX_COLUMNS = 4;
-  function getColumns(colIdx: number) {
-    return results.resources.filter(
-      (_, idx) => idx % MAX_COLUMNS === colIdx
-    )
-  }
   return (
     <section>
       <div className="flex flex-col gap-8">
-      <div className="flex justify-between">
-        <h1 className="text-4xl font-bold">Gallery</h1>
-        <UploadButton />
+        <div className="flex justify-between">
+          <h1 className="text-4xl font-bold">Gallery</h1>
+          <UploadButton />
         </div>
-        <div className="grid grid-cols-4 gap-4">
-        {results.resources.map((result) => (
-          <CloudinaryImg
-          key={result.public_id} 
-          alt={result.public_id}  
-          src={result.public_id}
-          tag={result.tags}
-          width={400} 
-          height={300}
-          />
-          ))
-        }
-        </div>
+        <GalleryGrid images={results.resources}/>
       </div>
     </section>
   )
