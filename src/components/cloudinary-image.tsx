@@ -6,6 +6,7 @@ import { setAsFavoriteAction } from "../app/gallery/actions";
 import { useState, useTransition } from "react";
 import { FullHeart } from "@/components/icons/full-heart";
 import { SearchResultT } from "../app/gallery/page";
+import { ImageMenu } from "./image-menu";
 
 interface CloudinaryImgProps {
     alt: string;
@@ -31,7 +32,7 @@ export default function CloudinaryImg({ alt, src, width, height, tag, onUnheart 
                         setAsFavoriteAction(src, false);
                     });
                 }}
-                    className="absolute top-2 right-8  text-red-600 cursor-pointer" />
+                    className="absolute top-2 left-2  text-red-600 cursor-pointer" />
                 :
                 <Heart onClick={() => {
                     setIsFavorite(true);
@@ -39,8 +40,9 @@ export default function CloudinaryImg({ alt, src, width, height, tag, onUnheart 
                         setAsFavoriteAction(src, true);
                     });
                 }}
-                    className="absolute top-2  right-8 text-white cursor-pointer" />
+                    className="absolute top-2 left-2 text-white cursor-pointer" />
             }
+            <ImageMenu />
         </div>
     );
 }
