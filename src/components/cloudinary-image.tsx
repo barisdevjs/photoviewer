@@ -42,7 +42,7 @@ export default function CloudinaryImg({ alt, src, width, height, tag, onUnheart 
                 }}
                     className="absolute top-2 left-2 text-white cursor-pointer" />
             }
-            <ImageMenu />
+            <ImageMenu url={src} /> 
         </div>
     );
 }

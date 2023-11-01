@@ -1,19 +1,15 @@
-import {
-    User,
-} from "lucide-react"
-
 import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuShortcut,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Menu } from "./icons/menu"
-import { FolderPlus } from "./icons/folder-plus"
+import { SearchResultT } from "@/app/gallery/page"
+import { AddToAlbumDialog } from "./ui/add-to-album-dialog"
 
-export function ImageMenu() {
+export function ImageMenu({url}:{url:SearchResultT["url"]}) {
     return (
         <div className="absolute top-2 right-6">
         <DropdownMenu>
@@ -22,10 +18,9 @@ export function ImageMenu() {
                     <Menu />
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-40">
-                <DropdownMenuItem className="flex items-center justify-between ">
-                    <FolderPlus/>
-                    <span>Add to Album</span>
+            <DropdownMenuContent >
+                <DropdownMenuItem asChild>
+                    <AddToAlbumDialog url={url} />
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
