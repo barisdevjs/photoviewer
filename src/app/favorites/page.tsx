@@ -1,5 +1,6 @@
 import cloudinary from "cloudinary";
 import FavoritesList from "./favorites-list";
+import { ForceRefresh } from "@/components/force-refresh";
 
 export type SearchResultT = {
   public_id: string,
@@ -20,6 +21,8 @@ export default async function FavoritesPage() {
 
   return (
     <section>
+      <ForceRefresh />
+
       <div className="flex flex-col gap-8">
       <div className="flex justify-between">
         <h1 className="text-4xl font-bold">Favorite Images</h1>

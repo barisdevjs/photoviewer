@@ -13,13 +13,17 @@ import { Label } from "@/components/ui/label"
 import { FolderPlus } from "../icons/folder-plus"
 import { useState } from "react"
 import { SearchResultT } from "@/app/gallery/page"
-import { createFolder } from "../actions"
+import { addImgToAlbum} from "../actions"
 
-export function AddToAlbumDialog({url}:{url:SearchResultT["url"]}) {
+export function AddToAlbumDialog({image, onClose}:{image:SearchResultT; onClose: () => void}) {
     const [albumName, setAlbumName] = useState("");
     const [open, setOpen] = useState(false);
+
     return (
-        <Dialog open={open} onOpenChange={setOpen}>
+        <Dialog open={open} onOpenChange={(newOpenState) => {
+            setOpen(newOpenState);
+            !newOpenState && onClose();
+        }}>
             <DialogTrigger asChild>
                 <Button variant="ghost" className="w-40 flex items-center justify-between">
                 <FolderPlus />
@@ -49,9 +53,10 @@ export function AddToAlbumDialog({url}:{url:SearchResultT["url"]}) {
                 <DialogFooter>
                     {/* OnClick  we need to invoke a server action*/}
                     <Button 
-                    onClick={ async() => { 
+                    onClick={ async () => { 
+                        onClose();
                         setOpen(false);
-                         await createFolder(url, albumName)}}
+                         await addImgToAlbum( image, albumName)}}
                     type="submit">Save changes</Button>
                 </DialogFooter>
             </DialogContent>
