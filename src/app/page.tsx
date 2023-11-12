@@ -4,8 +4,6 @@ import { CldUploadButton, CldUploadWidgetResults } from 'next-cloudinary';
 import { CldImage } from 'next-cloudinary';
 import { useState } from "react"
 
-
-
 export default function Home() {
   const [imageId, setImageId] = useState("");
   return (
