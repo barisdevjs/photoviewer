@@ -18,7 +18,7 @@ interface CloudinaryImgProps {
 }
 
 export default function CloudinaryImg({ alt, src, width, height, tag, onUnheart }: CloudinaryImgProps) {
-    const [transition, startTransition] = useTransition();
+    const [_, startTransition] = useTransition();
     const [isFavorite, setIsFavorite] = useState(tag.includes("favorite"));
 
     return (

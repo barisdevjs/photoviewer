@@ -7,11 +7,11 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export function SearchForm({ initialSearch }: { initialSearch: string }) {
-  const [tagName, setTagName] = useState(initialSearch ?? "");
+  const [tagName, setTagName] = useState(initialSearch || "");
   const router = useRouter();
 
   useEffect(() => {
-    setTagName(initialSearch);
+    setTagName(initialSearch || "");
   }, [initialSearch]);
 
   return (

@@ -26,7 +26,6 @@ export default async function GalleryPage({ searchParams }: PageProps) {
     .max_results(10)
     .execute() as { resources: SearchResultT[] }
 
-  console.log(results)
 
   return (
     <section>

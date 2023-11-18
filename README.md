@@ -29,18 +29,3 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out for [Next Cloudinary](https://next.cloudinary.dev/) for more details.
 
 Check out for cloudinary dashboard [Cloudinary](https://cloudinary.com/) for more details.
-
-
-
-            {/* {folders.map((folder) => (
-              <Button
-                variant="ghost"
-                asChild
-                key={folder.name}
-                className="w-full justify-start flex gap-2"
-              >
-                <Link className="pl-8" href={`/albums/${folder.path}`}>
-                  {folder.name}
-                </Link>
-              </Button>
-            ))} */}
