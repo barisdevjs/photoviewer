@@ -22,4 +22,4 @@ https://instagram.fyei4-1.fna.fbcdn.net/v/t51.2885-19/21042206_126524017984208_6
 
 1456352221
 
-https://www.instagram.com/api/v1/users/web_profile_info/?username=demetkavruk
+https://www.instagram.com/api/v1/users/web_profile_info/?username=XXX
