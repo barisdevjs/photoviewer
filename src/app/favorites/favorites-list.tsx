@@ -5,7 +5,11 @@ import CloudinaryImg from "../../components/cloudinary-image";
 import { SearchResultT } from "./page";
 import { useState, useEffect } from "react";
 
-export default function FavoritesList({ initialResources }: { initialResources: SearchResultT[] }) {
+interface FavoritesListProps {
+    initialResources: SearchResultT[];
+}
+
+export default function FavoritesList({ initialResources }: FavoritesListProps) {
     const [resources, setResources] = useState(initialResources)
 
     useEffect(() => {

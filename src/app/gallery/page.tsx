@@ -2,6 +2,7 @@ import UploadButton from "./upload-button";
 import cloudinary from "cloudinary";
 import GalleryGrid from "./gallery-grid";
 import { SearchForm } from "./search-form";
+import { ForceRefresh } from "@/components/force-refresh";
 
 export type SearchResultT = {
   public_id: string,
@@ -29,6 +30,7 @@ export default async function GalleryPage({ searchParams }: PageProps) {
 
   return (
     <section>
+      <ForceRefresh />
       <div className="flex flex-col gap-8">
         <div className="flex justify-between">
           <h1 className="text-4xl font-bold">Gallery</h1>
