@@ -9,12 +9,12 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <CldUploadButton
+        className='rounded-md border-1 p-2 bg-gray-500'
         uploadPreset="gegrjiwd"
         onUpload={(results: CldUploadWidgetResults) => {
           if (results.info && typeof results.info === 'object') {
             const publicId = (results.info as { public_id?: string }).public_id;
             if (publicId) {
-              console.log(publicId);
               setImageId(publicId);
             }
           }

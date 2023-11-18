@@ -31,7 +31,16 @@ Check out for [Next Cloudinary](https://next.cloudinary.dev/) for more details.
 Check out for cloudinary dashboard [Cloudinary](https://cloudinary.com/) for more details.
 
 
-CONTINUE
-235
 
-TASKS
+            {/* {folders.map((folder) => (
+              <Button
+                variant="ghost"
+                asChild
+                key={folder.name}
+                className="w-full justify-start flex gap-2"
+              >
+                <Link className="pl-8" href={`/albums/${folder.path}`}>
+                  {folder.name}
+                </Link>
+              </Button>
+            ))} */}
