@@ -21,9 +21,6 @@ export default function CloudinaryImg({ alt, src, width, height, tag, onUnheart 
     const [_, startTransition] = useTransition();
     const [isFavorite, setIsFavorite] = useState(tag.includes("favorite"));
 
-    console.log("Tag:", tag);
-    console.log("Is Favorite:", isFavorite);
-
     const handleUnheartClick = () => {
         onUnheart?.(src);
         setIsFavorite(false);
